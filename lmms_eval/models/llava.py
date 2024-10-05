@@ -19,14 +19,14 @@ from lmms_eval.api.instance import Instance
 from lmms_eval.api.model import lmms
 from lmms_eval.api.registry import register_model
 from lmms_eval.utils import stop_sequences_criteria
-from LLaVA.llava.constants import DEFAULT_IMAGE_TOKEN, IMAGE_TOKEN_INDEX
-from LLaVA.llava.conversation import conv_templates
-from LLaVA.llava.mm_utils import (
+from llava.constants import DEFAULT_IMAGE_TOKEN, IMAGE_TOKEN_INDEX
+from llava.conversation import conv_templates
+from llava.mm_utils import (
     get_model_name_from_path,
     process_images,
     tokenizer_image_token,
 )
-from LLaVA.llava.model.builder import load_pretrained_model
+from llava.model.builder import load_pretrained_model
 
 
 warnings.filterwarnings("ignore")
