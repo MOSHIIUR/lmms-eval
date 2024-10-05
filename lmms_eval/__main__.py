@@ -295,8 +295,12 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
     os.environ["VERBOSITY"] = args.verbosity
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-    pythonpath = os.environ.get('PYTHONPATH', None)
-    os.environ['PYTHONPATH'] = f"{pythonpath}:LLaVA" if pythonpath else './LLaVA'
+
+    pythonpath = os.environ.get('PYTHONPATH', '')
+    pwd = os.getcwd()  # Get the current working directory
+
+    # Update PYTHONPATH
+    os.environ['PYTHONPATH'] = f"{pythonpath}:{pwd}:{pwd}/LLaVA" if pythonpath else f"{pwd}:{pwd}/LLaVA"
 
     pythonpath = os.environ.get('PYTHONPATH', None)
     
