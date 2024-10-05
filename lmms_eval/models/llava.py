@@ -4,6 +4,7 @@ torch.backends.cuda.matmul.allow_tf32 = True
 
 
 import copy
+import os
 import warnings
 from datetime import timedelta
 from typing import List, Optional, Tuple, Union
@@ -32,6 +33,7 @@ try:
         tokenizer_image_token,
     )
     from llava.model.builder import load_pretrained_model
+
 except Exception as e:
     eval_logger.debug("LLaVA is not installed. Please install LLaVA to use this model.\nError: %s" % e)
 
@@ -88,8 +90,10 @@ class Llava(lmms):
             "multimodal": True,
         }
 
+        pythonpath = os.environ.get('PYTHONPATH', None)
         print('-'*100)
         print(f'pretrained model name: {pretrained}')
+        print(f'pythonpath: {pythonpath}')
         print('-'*100)
         if customized_config is not None:
             llava_model_args["customized_config"] = customized_config
@@ -97,7 +101,9 @@ class Llava(lmms):
             llava_model_args["attn_implementation"] = attn_implementation
         if "use_flash_attention_2" in kwargs:
             llava_model_args["use_flash_attention_2"] = kwargs["use_flash_attention_2"]
+        
         model_name = model_name if model_name is not None else get_model_name_from_path(pretrained)
+        
         try:
             # Try to load the model with the multimodal argument
             self._tokenizer, self._model, self._image_processor, self._max_length = load_pretrained_model(pretrained, None, model_name, device_map=self.device_map, **llava_model_args)
