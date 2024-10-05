@@ -25,14 +25,14 @@ warnings.filterwarnings("ignore")
 from loguru import logger as eval_logger
 
 try:
-    from LLaVA.llava.constants import DEFAULT_IMAGE_TOKEN, IMAGE_TOKEN_INDEX
-    from LLaVA.llava.conversation import conv_templates
-    from LLaVA.llava.mm_utils import (
+    from .LLaVA.llava.constants import DEFAULT_IMAGE_TOKEN, IMAGE_TOKEN_INDEX
+    from .LLaVA.llava.conversation import conv_templates
+    from .LLaVA.llava.mm_utils import (
         get_model_name_from_path,
         process_images,
         tokenizer_image_token,
     )
-    from LLaVA.llava.model.builder import load_pretrained_model
+    from .LLaVA.llava.model.builder import load_pretrained_model
 
 except Exception as e:
     eval_logger.debug("LLaVA is not installed. Please install LLaVA to use this model.\nError: %s" % e)
