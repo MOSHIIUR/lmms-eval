@@ -1031,14 +1031,8 @@ class ConfigurableTask(Task):
 
         
         print('*'*100)
-        print(f'Dataset Path: {self.DATASET_PATH}')
         hf_cache = os.environ.get('HF_DATASETS_CACHE', None)
         print(f'HF_DATASETS_CACHE: {hf_cache}')
-        print('#'*100)
-        print('dataset_kwargs')
-        print('#'*100)
-        if dataset_kwargs is not None:
-            print(dataset_kwargs)
         print('#'*100)
 
         self.dataset = datasets.load_dataset(

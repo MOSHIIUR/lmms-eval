@@ -301,6 +301,9 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
     # Add the LLaVA directory to the Python path
     sys.path.append(os.path.abspath(llava_path))
 
+    # chaging the HF_DATASETS_CACHE
+    os.environ['HF_DATASETS_CACHE']=pwd
+
 
     args_list = []
     results_list = []
