@@ -87,6 +87,10 @@ class Llava(lmms):
         llava_model_args = {
             "multimodal": True,
         }
+
+        print('-'*100)
+        print(f'pretrained model name: {pretrained}')
+        print('-'*100)
         if customized_config is not None:
             llava_model_args["customized_config"] = customized_config
         if attn_implementation is not None:
