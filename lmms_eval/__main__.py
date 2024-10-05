@@ -302,7 +302,7 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
     sys.path.append(os.path.abspath(llava_path))
 
     # chaging the HF_DATASETS_CACHE
-    os.environ['HF_DATASETS_CACHE']=f'{pwd}/. cache/huggingface/hub'
+    os.environ['HF_DATASETS_CACHE']=f'{pwd}/.cache/huggingface/hub'
 
 
     args_list = []
