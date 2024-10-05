@@ -19,23 +19,32 @@ from lmms_eval.api.instance import Instance
 from lmms_eval.api.model import lmms
 from lmms_eval.api.registry import register_model
 from lmms_eval.utils import stop_sequences_criteria
+from LLaVA.llava.constants import DEFAULT_IMAGE_TOKEN, IMAGE_TOKEN_INDEX
+from LLaVA.llava.conversation import conv_templates
+from LLaVA.llava.mm_utils import (
+    get_model_name_from_path,
+    process_images,
+    tokenizer_image_token,
+)
+from LLaVA.llava.model.builder import load_pretrained_model
+
 
 warnings.filterwarnings("ignore")
 
 from loguru import logger as eval_logger
 
-try:
-    from .LLaVA.llava.constants import DEFAULT_IMAGE_TOKEN, IMAGE_TOKEN_INDEX
-    from .LLaVA.llava.conversation import conv_templates
-    from .LLaVA.llava.mm_utils import (
-        get_model_name_from_path,
-        process_images,
-        tokenizer_image_token,
-    )
-    from .LLaVA.llava.model.builder import load_pretrained_model
+# try:
+#     from LLaVA.llava.constants import DEFAULT_IMAGE_TOKEN, IMAGE_TOKEN_INDEX
+#     from LLaVA.llava.conversation import conv_templates
+#     from LLaVA.llava.mm_utils import (
+#         get_model_name_from_path,
+#         process_images,
+#         tokenizer_image_token,
+#     )
+#     from LLaVA.llava.model.builder import load_pretrained_model
 
-except Exception as e:
-    eval_logger.debug("LLaVA is not installed. Please install LLaVA to use this model.\nError: %s" % e)
+# except Exception as e:
+#     eval_logger.debug("LLaVA is not installed. Please install LLaVA to use this model.\nError: %s" % e)
 
 # inference implementation for attention, can be "sdpa", "eager", "flash_attention_2". Seems FA2 is not effective during inference: https://discuss.huggingface.co/t/flash-attention-has-no-effect-on-inference/73453/5
 # if is_flash_attn_2_available:
