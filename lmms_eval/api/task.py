@@ -1038,7 +1038,6 @@ class ConfigurableTask(Task):
         self.dataset = datasets.load_dataset(
             path=self.DATASET_PATH,
             name=self.DATASET_NAME,
-            cache_dir=hf_cache,
             download_mode=datasets.DownloadMode.REUSE_DATASET_IF_EXISTS,
             download_config=download_config,
             **dataset_kwargs if dataset_kwargs is not None else {},
