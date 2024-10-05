@@ -300,7 +300,7 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
     pwd = os.getcwd()  # Get the current working directory
 
     # Update PYTHONPATH
-    os.environ['PYTHONPATH'] = f"{pythonpath}:{pwd}:{pwd}/LLaVA" if pythonpath else f"{pwd}:{pwd}/LLaVA"
+    os.environ['PYTHONPATH'] = f"{pythonpath}:{pwd}/LLaVA" if pythonpath else f"{pwd}:{pwd}/LLaVA"
 
     pythonpath = os.environ.get('PYTHONPATH', None)
     
