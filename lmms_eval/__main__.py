@@ -296,7 +296,7 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
     pythonpath = os.environ.get('PYTHONPATH', '')
-    os.environ['PYTHONPATH'] = f"{pythonpath}:./LLaVA" if pythonpath else './LLaVA'
+    os.environ['PYTHONPATH'] = f"{pythonpath}:./LLaVA/llava" if pythonpath else './LLaVA'
 
     args_list = []
     results_list = []
