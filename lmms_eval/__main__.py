@@ -294,15 +294,8 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
     eval_logger.info(f"Verbosity set to {args.verbosity}")
     os.environ["VERBOSITY"] = args.verbosity
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
+    os.environ["HF_HOME"] = '~/.cache'
 
-    hf_home = os.environ.get("HF_HOME", None)
-    hf_token = os.environ.get("HF_TOKEN", None)
-
-    print('-'*100)
-    print(f'os.environ["HF_HOME"]: {os.environ["HF_HOME"]}')
-    print(f'os.environ["HF_HOME"]: {hf_home}')
-    print(f'os.environ["HF_TOKEN"]: {hf_token}')
-    print('-'*100)
 
     args_list = []
     results_list = []
