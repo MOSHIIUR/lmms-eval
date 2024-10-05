@@ -529,4 +529,7 @@ def print_results(args, results):
 
 
 if __name__ == "__main__":
+    print('*'*100)
+    print('working')
+    print('*'*100)
     cli_evaluate()
