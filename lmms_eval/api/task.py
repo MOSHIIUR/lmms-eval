@@ -877,6 +877,14 @@ class ConfigurableTask(Task):
         download_config.max_retries = dataset_kwargs.get("max_retries", 10) if dataset_kwargs is not None else 10
         download_config.num_proc = dataset_kwargs.get("num_proc", 8) if dataset_kwargs is not None else 8
         download_config.local_files_only = dataset_kwargs.get("local_files_only", False) if dataset_kwargs is not None else False
+        
+        print('*'*100)
+        print(f'Dataset Path: {self.DATASET_PATH}')
+        hf_home = os.environ.get('HF_HOME', None)
+        print(f'HF_HOME: {hf_home}')
+        print('#'*100)
+        print('#'*100)
+        
         if dataset_kwargs is not None:
             if "From_YouTube" in dataset_kwargs:
 
