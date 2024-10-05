@@ -878,12 +878,6 @@ class ConfigurableTask(Task):
         download_config.num_proc = dataset_kwargs.get("num_proc", 8) if dataset_kwargs is not None else 8
         download_config.local_files_only = dataset_kwargs.get("local_files_only", False) if dataset_kwargs is not None else False
         
-        print('*'*100)
-        print(f'Dataset Path: {self.DATASET_PATH}')
-        hf_home = os.environ.get('HF_HOME', None)
-        print(f'HF_HOME: {hf_home}')
-        print('#'*100)
-        print('#'*100)
         
         if dataset_kwargs is not None:
             if "From_YouTube" in dataset_kwargs:
@@ -1034,6 +1028,18 @@ class ConfigurableTask(Task):
 
             if "local_files_only" in dataset_kwargs:
                 dataset_kwargs.pop("local_files_only")
+
+        
+        print('*'*100)
+        print(f'Dataset Path: {self.DATASET_PATH}')
+        hf_cache = os.environ.get('HF_DATASETS_CACHE', None)
+        print(f'HF_DATASETS_CACHE: {hf_cache}')
+        print('#'*100)
+        print('dataset_kwargs')
+        print('#'*100)
+        if dataset_kwargs is not None:
+            print(dataset_kwargs)
+        print('#'*100)
 
         self.dataset = datasets.load_dataset(
             path=self.DATASET_PATH,
