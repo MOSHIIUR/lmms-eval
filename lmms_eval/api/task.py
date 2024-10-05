@@ -261,10 +261,12 @@ class Task(abc.ABC):
             - `datasets.DownloadMode.FORCE_REDOWNLOAD`
                 Fresh download and fresh dataset.
         """
+
+        hf_home = os.environ.get("HF_HOME", None)
         
         print('*'*100)
-        print(f'Dataset Path: {self.DATASET_PATH}')
-        print(f'HF_HOME: {os.environ['HF_HOME']}')
+        print(f'HuggingFace Dataset cache Path: {self.DATASET_PATH}')
+        print(f'HF_HOME: {hf_home}')
         print('*'*100)
 
         self.dataset = datasets.load_dataset(
