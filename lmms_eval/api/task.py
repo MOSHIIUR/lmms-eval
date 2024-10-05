@@ -261,6 +261,12 @@ class Task(abc.ABC):
             - `datasets.DownloadMode.FORCE_REDOWNLOAD`
                 Fresh download and fresh dataset.
         """
+        
+        print('*'*100)
+        print(f'Dataset Path: {self.DATASET_PATH}')
+        print(f'HF_HOME: {os.environ['HF_HOME']}')
+        print('*'*100)
+
         self.dataset = datasets.load_dataset(
             path=self.DATASET_PATH,
             name=self.DATASET_NAME,
