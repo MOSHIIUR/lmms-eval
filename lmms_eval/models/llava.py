@@ -25,14 +25,14 @@ warnings.filterwarnings("ignore")
 from loguru import logger as eval_logger
 
 try:
-    from llava.constants import DEFAULT_IMAGE_TOKEN, IMAGE_TOKEN_INDEX
-    from llava.conversation import conv_templates
-    from llava.mm_utils import (
+    from LLaVA.llava.constants import DEFAULT_IMAGE_TOKEN, IMAGE_TOKEN_INDEX
+    from LLaVA.llava.conversation import conv_templates
+    from LLaVA.llava.mm_utils import (
         get_model_name_from_path,
         process_images,
         tokenizer_image_token,
     )
-    from llava.model.builder import load_pretrained_model
+    from LLaVA.llava.model.builder import load_pretrained_model
 
 except Exception as e:
     eval_logger.debug("LLaVA is not installed. Please install LLaVA to use this model.\nError: %s" % e)
@@ -90,12 +90,13 @@ class Llava(lmms):
             "multimodal": True,
         }
 
-        pythonpath = os.environ.get('PYTHONPATH', None)
+        # pythonpath = os.environ.get('PYTHONPATH', None)
         
-        print('-'*100)
-        print(f'pretrained model name: {pretrained}')
-        print(f'pythonpath: {pythonpath}')
-        print('-'*100)
+        # print('-'*100)
+        # print(f'pretrained model name: {pretrained}')
+        # print(f'pythonpath: {pythonpath}')
+        # print('-'*100)
+
         if customized_config is not None:
             llava_model_args["customized_config"] = customized_config
         if attn_implementation is not None:
