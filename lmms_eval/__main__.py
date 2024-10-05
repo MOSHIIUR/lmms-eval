@@ -294,8 +294,9 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
     eval_logger.info(f"Verbosity set to {args.verbosity}")
     os.environ["VERBOSITY"] = args.verbosity
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
-    # os.environ["HF_HOME"] = '~/.cache'
 
+    pythonpath = os.environ.get('PYTHONPATH', '')
+    os.environ['PYTHONPATH'] = f"{pythonpath}:./LLaVA" if pythonpath else './LLaVA'
 
     args_list = []
     results_list = []

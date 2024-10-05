@@ -13,7 +13,6 @@
 
 export TORCH_HOME=/project/CollabRoboGroup/.cache
 export TRANSFORMERS_CACHE=/project/CollabRoboGroup/.cache
-export PYTHONPATH=$PYTHONPATH:./LLaVA
 
 
 
