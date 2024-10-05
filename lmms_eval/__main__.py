@@ -295,18 +295,12 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
     os.environ["VERBOSITY"] = args.verbosity
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-
     pwd = os.getcwd()  # Get the current working directory
-    llava_path = os.path.abspath(f'{pwd}/LLaVA')  # Ensure absolute path to LLaVA
+    # Ensure absolute path to LLaVA
+    llava_path = os.path.abspath(f'{pwd}/LLaVA')  
     # Add the LLaVA directory to the Python path
-    sys.path.append(os.path.abspath(llava_path))    # pythonpath = os.environ.get('PYTHONPATH', '')
-    # os.environ['PYTHONPATH'] = f"{pythonpath}:{llava_path}" if pythonpath else llava_path
+    sys.path.append(os.path.abspath(llava_path))
 
-    # pythonpath = os.environ.get('PYTHONPATH', None)
-    
-    # print('-'*100)
-    # print(f'pythonpath: {pythonpath}')
-    # print('-'*100)
 
     args_list = []
     results_list = []

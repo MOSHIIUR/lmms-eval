@@ -19,15 +19,6 @@ from lmms_eval.api.instance import Instance
 from lmms_eval.api.model import lmms
 from lmms_eval.api.registry import register_model
 from lmms_eval.utils import stop_sequences_criteria
-from llava.constants import DEFAULT_IMAGE_TOKEN, IMAGE_TOKEN_INDEX
-from llava.conversation import conv_templates
-from llava.mm_utils import (
-    get_model_name_from_path,
-    process_images,
-    tokenizer_image_token,
-)
-from llava.model.builder import load_pretrained_model
-
 
 warnings.filterwarnings("ignore")
 
@@ -98,13 +89,6 @@ class Llava(lmms):
         llava_model_args = {
             "multimodal": True,
         }
-
-        pythonpath = os.environ.get('PYTHONPATH', None)
-        
-        print('-'*100)
-        print(f'pretrained model name: {pretrained}')
-        print(f'pythonpath: {pythonpath}')
-        print('-'*100)
 
         if customized_config is not None:
             llava_model_args["customized_config"] = customized_config
